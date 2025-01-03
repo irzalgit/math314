@@ -16,7 +16,7 @@ export default function Home() {
     <main>
       <form action={getMenuItem}>
         <label htmlFor="theme">
-          Saya siswa smk kelas 12  ingin tahu tentang ujian nasional dan test cpns tentang  matematika berikan 1 contoh soal dan jawabannya secara rinci, dengan tema:{' '}
+          Saya siswa smk   ingin tahu tentang ujian nasional dan test cpns tentang  matematika berikan 1 contoh soal dan jawabannya secara rinci, dengan tema:{' '}
         </label>
         <input type="text" name="theme" id="theme" />
         <br />
