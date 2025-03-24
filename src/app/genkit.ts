@@ -31,7 +31,7 @@ const menuSuggestionFlow = defineFlow(
   async (subject) => {
     // Construct a request and send it to the model API.
     const llmResponse = await generate({
-      prompt: `Saya siswa smk kelas x  ingin bertanya tentang materi matematika dengan tema ${subject} secara detail `,
+      prompt: `Saya siswa smk   ingin bertanya tentang materi matematika dengan tema ${subject} secara detail `,
       model: gemini15Flash,
       config: {
         temperature: 1,

@@ -1,0 +1,45 @@
+:root {
+  --min-input-width: 200px; /* Lebar minimum input */
+  --padding-horizontal: 12px;
+  --padding-vertical: 8px;
+  --max-input-width: 100%; /* Lebar maksimum relatif terhadap parent */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.input-container {
+  width: var(--max-input-width);
+  display: inline-block;
+}
+
+.auto-resizing-input {
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: var(--padding-vertical) var(--padding-horizontal);
+  min-inline-size: var(--min-input-width);
+  inline-size: var(--max-input-width);
+  max-inline-size: var(--max-input-width);
+  block-size: auto;
+  resize: none; /* Mencegah user resize manual */
+  overflow-wrap: break-word; /* Memastikan teks wrap jika panjang */
+  overflow: hidden;
+  outline: none;
+
+  /* Animasi perubahan ukuran */
+  transition: all 0.2s ease-in-out;
+}
+
+.auto-resizing-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}

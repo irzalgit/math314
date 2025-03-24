@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "math314-app",
+    "staging": "math314-app"
+  },
+  "targets": {},
+  "etags": {}
+}

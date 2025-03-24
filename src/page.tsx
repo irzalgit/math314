@@ -1,36 +1,23 @@
 'use client';
 
 import { callMenuSuggestionFlow } from '@/app/genkit';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 export default function Home() {
   const [menuItem, setMenuItem] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const router = useRouter();
 
   const articles = [
-    "Apa manfaat saya mempelajari matematika dalam menghadapi era kompetisi di dunia kerja sekarang ini termasuk test cpns dan kedinasan",
-    "Saya sedang mempersiapkan ujian akhir smk atau PAS atau ASAS bisakah kamu memberi prosedur cara belajar matematika yang efektif",
-    "Dapatkah kamu memberi ringkasan materi matematika untuk smk kurikulum merdeka",
-    "Jelaskan secara singkat kegunaan teori limit untuk pengembangan teori deferensial dan integral",
-    "Jelaskan secara singkat kegunaan materi matematika khususnya lingkaran di smk kejuruan jurusan teknik komputer jaringan, teknik sepeda motor, teknik geomatika",
-    "Berikan contoh soal tentang peluang dalam materi matematika kelas xi smk terhadap 1 dadu sebanyak 15 soal yang bervariasi berikut jawabannya",
-    "Berikan saya penjelasan tentang hubungan garis singgung dengan turunan pertama, beri contoh soal dan jawabannya",
-    "Dalam segiempat talibusur ABCD, AC dan BD berpotongan di titik E didalam lingkaran. Tentukan besar sudut CED jika sudut pusat APD 100 derajat dan sudut pusat BPC 30 derajat. Dimana P adalah titik pusat lingkaran",
+    'Linear equations in daily life',
+    'Geometry in architecture',
+    'Statistics in business',
   ];
 
- 
-useEffect(() => {
-  if (typeof window !== "undefined" && window.MathJax) {
-    window.MathJax.typesetPromise?.().catch((err) => console.error("MathJax Error:", err));
-  }
-}, [menuItem]);
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(event.target.value);
     adjustTextareaHeight(event.target);
@@ -99,21 +86,11 @@ useEffect(() => {
         </div>
       </div>
 
-     
-
-<button
-  className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-  onClick={() => router.push('/soal')} // Mengarahkan ke halaman soal.tsx
->
-  Pergi ke Halaman Soal
-</button>
-
-
-
       {menuItem && (
-        <div className="p-6 bg-white rounded-lg shadow-md mt-6">
+        <div className="p-6 bg-white rounded-lg shadow-md">
           <ReactMarkdown
             remarkPlugins={[remarkMath]}
+            rehypePlugins={[rehypeKatex]}
             components={{
               ol: ({ node, ...props }) => (
                 <ol className="list-decimal list-inside space-y-4" {...props} />
@@ -127,17 +104,6 @@ useEffect(() => {
           >
             {menuItem}
           </ReactMarkdown>
-          <script
-            type="text/javascript"
-            id="MathJax-script"
-            async
-            src="https://polyfill.io/v3/polyfill.min.js?features=es6"
-          ></script>
-          <script
-            type="text/javascript"
-            async
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-          ></script>
         </div>
       )}
     </main>
